@@ -1,83 +1,71 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
 
-const productSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema(
+  {
     title: {
-        type: String,
-        trim: true,
-        required: true,
-        maxlength: 32,
-        text: true,
+      type: String,
+      trim: true,
+      required: true,
+      maxlength: 32,
+      text: true,
     },
     slug: {
-        type: String,
-        unique: true,
-        lowercase: true,
-        index: true,
+      type: String,
+      unique: true,
+      lowercase: true,
+      index: true,
     },
     description: {
-        type: String,
-        required: true,
-        maxlength: 3000,
-        text: true,
+      type: String,
+      required: true,
+      maxlength: 2000,
+      text: true,
     },
     price: {
-        type: Number,
-        required: true,
-        trim: true,
-        maxlength: 32,
+      type: Number,
+      required: true,
+      trim: true,
+      maxlength: 32,
     },
     category: {
-        type: ObjectId,
-        ref: "Category"
+      type: ObjectId,
+      ref: "Category",
     },
-    sub: [{
+    subs: [
+      {
         type: ObjectId,
-        ref: 'Sub',
-    }],
+        ref: "Sub",
+      },
+    ],
     quantity: Number,
     sold: {
-        type: Number,
-        default: 0
+      type: Number,
+      default: 0,
     },
-    images: {
-        type: Array,
-    },
+    // images: {
+    //   type: Array,
+    // },
     shipping: {
-        type: String,
-        enum: ["Yes", "No"],
+      type: String,
+      enum: ["Yes", "No"],
     },
     color: {
-        type: String,
-        enum:
-            [
-                "Black",
-                "Brown",
-                "Silver",
-                "Whit",
-                "Blue",
-                "Read",
-            ],
+      type: String,
+      enum: ["Black", "Brown", "Silver", "White", "Blue"],
     },
     brand: {
-        type: String,
-        enum:
-            [
-                "Apple",
-                "Samsung",
-                "Lenovo",
-                "Huawei",
-                "ASUS",
-                "Microsoft",
-            ],
+      type: String,
+      enum: ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS"],
     },
     // ratings: [
-    //     {
-    //         star: Number,
-    //         postedBy: { type: ObjectId, ref: "User" }
-    //     },
+    //   {
+    //     star: Number,
+    //     postedBy: { type: ObjectId, ref: "User" },
+    //   },
     // ],
-
-}, { timestamp: true }
+  },
+  { timestamps: true }
 );
-module.exports = mongoose.model('Product', productSchema);
+
+module.exports = mongoose.model("Product", productSchema);
