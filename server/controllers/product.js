@@ -101,6 +101,7 @@ exports.list = async (req, res) => {
 			.sort([[sort, order]])
 			.limit(perPage)
 			.exec();
+
 		res.json(products);
 	} catch (err) {
 		console.log(err);
