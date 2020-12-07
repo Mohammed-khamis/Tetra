@@ -39,7 +39,7 @@ const FileUpload = ({ values, setValues, setLoading }) => {
 								},
 							)
 							.then((res) => {
-								console.log('image upload res date', res);
+								// console.log('image upload res date', res);
 								setLoading(false);
 								allUploadedFiles.push(res.data);
 
@@ -50,7 +50,7 @@ const FileUpload = ({ values, setValues, setLoading }) => {
 							})
 							.catch((err) => {
 								setLoading(false);
-								console.log('cloudinary upload err', err);
+								// console.log('cloudinary upload err', err);
 							});
 					},
 					'base64',
@@ -81,7 +81,7 @@ const FileUpload = ({ values, setValues, setLoading }) => {
 				setValues({ ...values, images: filteredImages });
 			})
 			.catch((err) => {
-				console.log(err);
+				// console.log(err);
 				setLoading(false);
 			});
 	};

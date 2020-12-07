@@ -25,7 +25,7 @@ const AllProducts = () => {
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
+        // console.log(err);
       });
   };
 
@@ -40,7 +40,7 @@ const AllProducts = () => {
         })
         .catch((err) => {
           if (err.response.status === 400) toast.error(err.response.data);
-          console.log(err);
+          // console.log(err);
         });
     }
   };

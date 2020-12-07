@@ -19,7 +19,7 @@ const initialState = {
 	quantity: '',
 	images: [],
 	colors: ['Black', 'Brown', 'Silver', 'White', 'Blue'],
-	brands: ['Apple', 'Samsung', 'Microsoft', 'Lenovo', 'ASUS'],
+	brands: ['Apple', 'Samsung', 'Microsoft', 'Lenovo', 'ASUS', 'Acer'],
 	color: '',
 	brand: '',
 };
@@ -62,10 +62,10 @@ const ProductCreate = () => {
 
 	const handleCatagoryChange = (e) => {
 		e.preventDefault();
-		console.log('CLICKED CATEGORY', e.target.value);
+		// console.log('CLICKED CATEGORY', e.target.value);
 		setValues({ ...values, subs: [], category: e.target.value });
 		getCategorySubs(e.target.value).then((res) => {
-			console.log('SUB OPTIONS ON CATGORY CLICK', res);
+			// console.log('SUB OPTIONS ON CATGORY CLICK', res);
 			setSubOptions(res.data);
 		});
 		setShowSub(true);
