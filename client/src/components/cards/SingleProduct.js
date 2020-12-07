@@ -6,11 +6,13 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import NoImage from '../../images/No-image-available.png';
 import ProductListItems from './ProductListItems';
+import StarRating from "react-star-ratings";
+import RatingModal from "../modal/RatingModal";
 
 const { TabPane } = Tabs;
 
-const SingleProduct = ({ product }) => {
-	const { title, images, discription } = product;
+const SingleProduct = ({ product, onStarClick, star }) => {
+	const { title, images, discription, _id } = product;
 
 	return (
 		<>
@@ -20,10 +22,11 @@ const SingleProduct = ({ product }) => {
 						{images && images.map((i) => <img src={i.url} key={i.public_id} />)}
 					</Carousel>
 				) : (
-					<Card
-						cover={<img src={NoImage} className="mb-3 card-image" />}
-					></Card>
-				)}
+						<Card
+							cover={<img src={NoImage} className="mb-3 card-image" />}
+						></Card>
+					)}
+
 				<Tabs type="card">
 					<TabPane tab="Description" key="1">
 						{discription && discription}
@@ -36,16 +39,26 @@ const SingleProduct = ({ product }) => {
 
 			<div className="col-md-5">
 				<h1 className="bg-info p-3">{title}</h1>
+
 				<Card
 					actions={[
 						<>
 							<ShoppingCartOutlined className="text-success" /> <br />
-							Add to Cart
-						</>,
+					  Add to Cart
+					</>,
 						<Link to="/">
-							<HeartOutlined className="text-info" />
-							<br /> Add to Wishlist
-						</Link>,
+							<HeartOutlined className="text-info" /> <br /> Add to Wishlist
+					</Link>,
+						<RatingModal>
+							<StarRating
+								name={_id}
+								numberOfStars={5}
+								rating={star}
+								changeRating={onStarClick}
+								isSelectable={true}
+								starRatedColor="red"
+							/>
+						</RatingModal>,
 					]}
 				>
 					<ProductListItems product={product} />
