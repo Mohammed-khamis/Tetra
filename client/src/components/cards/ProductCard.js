@@ -3,7 +3,7 @@ import { Card } from 'antd';
 import { EyeOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import NoImage from '../../images/No-image-available.png';
-import { showAverage } from "../../functions/rating";
+import { showAverage } from '../../functions/rating';
 
 const { Meta } = Card;
 
@@ -15,24 +15,24 @@ const ProductCard = ({ product }) => {
 			{product && product.ratings && product.ratings.length > 0 ? (
 				showAverage(product)
 			) : (
-					<div className="text-center pt-1 pb-3">No rating yet</div>
-				)}
+				<div className="text-center pt-1 pb-3">No rating yet</div>
+			)}
 
 			<Card
 				cover={
 					<img
 						src={images && images.length ? images[0].url : NoImage}
-						style={{ height: "150px", objectFit: "cover" }}
+						style={{ height: '150px', objectFit: 'cover' }}
 						className="p-1"
 					/>
 				}
 				actions={[
 					<Link to={`/product/${slug}`}>
 						<EyeOutlined className="text-warning" /> <br /> View Product
-			</Link>,
+					</Link>,
 					<>
 						<ShoppingCartOutlined className="text-danger" /> <br /> Add to Cart
-			</>,
+					</>,
 				]}
 			>
 				<Meta

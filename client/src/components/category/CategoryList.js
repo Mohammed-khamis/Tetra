@@ -14,18 +14,15 @@ const CategoryList = () => {
 		});
 	}, []);
 
-	const showCategories = () => {
-		return categories.map((c) => {
-			return (
-				<div
-					className="btn btn-outlined-primary btn-block btn-raised m-3 col"
-					key={c._id}
-				>
-					<Link to={`/category/${c.slug}`}>{c.name}</Link>
-				</div>
-			);
-		});
-	};
+	const showCategories = () =>
+		categories.map((c) => (
+			<div
+				className="btn btn-outlined-primary btn-block btn-raised m-3 col"
+				key={c._id}
+			>
+				<Link to={`/category/${c.slug}`}>{c.name}</Link>
+			</div>
+		));
 
 	return (
 		<div className="container">
