@@ -18,7 +18,7 @@ const initialState = {
 	quantity: "",
 	images: [],
 	colors: ["Black", "Brown", "Silver", "White", "Blue"],
-	brands: ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS"],
+	brands: ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS","Acer"],
 	color: "",
 	brand: "",
 };
@@ -62,7 +62,7 @@ const ProductUpdate = ({ match, history }) => {
 
 	const loadCategories = () =>
 		getCategories().then((c) => {
-			console.log("GET CATEGORIES IN UPDATE PRODUCT", c.data);
+			// console.log("GET CATEGORIES IN UPDATE PRODUCT", c.data);
 			setCategories(c.data);
 		});
 
@@ -93,17 +93,17 @@ const ProductUpdate = ({ match, history }) => {
 
 	const handleCategoryChange = (e) => {
 		e.preventDefault();
-		console.log("CLICKED CATEGORY", e.target.value);
+		// console.log("CLICKED CATEGORY", e.target.value);
 		setValues({ ...values, subs: [] });
 
 		setSelectedCategory(e.target.value);
 
 		getCategorySubs(e.target.value).then((res) => {
-			console.log("SUB OPTIONS ON CATGORY CLICK", res);
+			// console.log("SUB OPTIONS ON CATGORY CLICK", res);
 			setSubOptions(res.data);
 		});
 
-		console.log("EXISTING CATEGORY values.category", values.category);
+		// console.log("EXISTING CATEGORY values.category", values.category);
 
 		// if user clicks back to the original category
 		// show its sub categories in default
